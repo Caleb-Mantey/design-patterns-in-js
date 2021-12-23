@@ -1,6 +1,6 @@
 const Mailer = require("./mailer");
-const HtmlFormatter = require("./html_formatter");
-const TextFormatter = require("./text_formatter");
+const HtmlFormatter = require("../single-responsibility principle/html_formatter");
+const TextFormatter = require("../single-responsibility principle/text_formatter");
 
 const mailer = new Mailer("hello kwame", [
   new HtmlFormatter(),

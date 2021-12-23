@@ -6,6 +6,7 @@ class Mailer {
     this.mail = mail;
     this.mailerFormats = mailerFormats;
     this.smtpService = new SendGridSmtpService();
+    // this.smtpService = new PostMarkSmtpService();
   }
 
   send() {
