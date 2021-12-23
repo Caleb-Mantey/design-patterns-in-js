@@ -26,24 +26,33 @@ You have a mailer class that connects to an smtp service, takes an email process
     class Mailer{
         constructor(mail){
             this.mail = mail
-            this.smtpService = smtp_service_connection()
+            this.smtpService = this.smtp_service_connection()
         }
 
-        function smtp_service_connection(){
+        smtp_service_connection(){
             // Connects to smtp service
         }
 
-        function send(){
+        send(){
             this.smtpService.send(this.format_text_mail())
              this.smtpService.send(this.format_html_mail())
         }
 
-        function format_text_mail(){
-            // formats text version of mail
+        format_text_mail(){
+            // formats to text version of mail
+            this.mail = "Email For You \n" + this.mail;
+
+            return this.mail;
         }
 
-        function format_html_mail(){
-            // formats html version of mail
+        format_html_mail(){
+            // formats to html version of mail
+             this.mail = `<html>
+            <head><title>Email For You</title></head>
+            <body>${this.mail}</body>
+            </html>`;
+
+            return this.mail;
         }
     }
 ```
@@ -77,7 +86,7 @@ Also our `HtmlFormatter` and `TextFormatter` are doing just one thing formating 
             this.smtpService = new MailerSmtpService()
         }
 
-        function send(){
+        send(){
             // Loops through mail formats and calls the send method
             this.mailerFormats.forEach((formater) => this.smtpService.send(formater.format(this.mail)))
         }
@@ -90,12 +99,12 @@ Also our `HtmlFormatter` and `TextFormatter` are doing just one thing formating 
            this.smtp_con = smtp_service_connection()
         }
 
-        function send (mail){
+        send (mail){
             this.smtp_con.send(mail)
-            // can also be this.smtp_con.deliver(mail)
+            // can easily change to be this if a service requires this implementation - smtp_con.deliver(mail)
         }
 
-        function smtp_service_connection(){
+        smtp_service_connection(){
             // Connects to smtp service
         }
     }
@@ -107,8 +116,8 @@ Also our `HtmlFormatter` and `TextFormatter` are doing just one thing formating 
         constructor(){
         }
 
-        function format(mail){
-             // sends html version of mail
+        format(mail){
+             // formats to html version of mail
         }
     }
 ```
@@ -119,8 +128,8 @@ Also our `HtmlFormatter` and `TextFormatter` are doing just one thing formating 
         constructor(){
         }
 
-        function format(mail){
-             // sends text version of mail
+        format(mail){
+             // formats to text version of mail
         }
     }
 ```
@@ -134,4 +143,100 @@ Now we can send an email by simply doing this
 #### Open-closed Principle
 > This priciple states that a class must be open for extension but close for modification.
 
-This princple focus on the fact that the class must be easily extended without changing the contents of the class. If we follow this principle well we can actually change the behaviour of our class without ever touching any original piece of code.
+This princple focus on the fact that the class must be easily extended without changing the contents of the class. If we follow this principle well we can actually change the behaviour of our class without ever touching any original piece of code. This also means if a Developer named Fred works on f a certain feature and another Developer named Kwame wants to add some changes, then Kwame should be able to that easily by extending on the features Fred has already provided.
+
+Lets take an example from our `MailerSmtpService` class in the first example and lets make it support this principle.
+
+#### MailerSmtpService - ( Initial )
+This is our initial implementation for the for the `MailerSmtpService`. Nothing fancy here yet
+```javascript
+    class MailerSmtpService{
+        constructor(){
+           this.smtp_con = this.smtp_service_connection()
+        }
+
+        send (mail){
+            this.smtp_con.send(mail)
+            // can also be this.smtp_con.deliver(mail)
+        }
+
+        smtp_service_connection(){
+            // Connects to smtp service
+        }
+    }
+```
+
+#### MailerSmtpService - ( Enhanced )
+To support the open-closed principle we remove the `smtp_service_connection` method from our `MailerSmtpService` class and rather we pass the method through a constructor method, then in a subclass (`PostMarkSmtpService` and `SendGridSmtpService`) that inherits from `MailerSmtpService` we call the `constructor` method of the base class with `super(smtp_connection_implementaion)` and we pass an implementation of the `smtp_service_connection` which handles the smtp connection depending on smtp provider in use.
+
+```javascript
+    class MailerSmtpService{
+        constructor(smtp_connection){
+           this.smtp_con = smtp_connection()
+        }
+
+        send (mail){
+            this.smtp_con.send(mail)
+        }
+    }
+```
+
+
+#### PostMarkSmtpService
+```javascript
+    class PostMarkSmtpService extends MailerSmtpService {
+        constructor(){
+            super(this.postmark_smtp_connection)
+        }
+
+        send (mail){
+            this.smtp_con.send(mail)
+            // can also be this.smtp_con.deliver(mail)
+        }
+
+        postmark_smtp_connection(){
+            // Connects to smtp service
+        }
+    }
+```
+
+
+#### SendGridSmtpService
+```javascript
+    class SendGridSmtpService extends MailerSmtpService {
+        constructor(){
+            super(this.send_grid_smtp_connection)
+        }
+
+        send (mail){
+            this.smtp_con.send(mail)
+            // can also be this.smtp_con.deliver(mail)
+        }
+
+        send_grid_smtp_connection(){
+            // Connects to smtp service
+        }
+    }
+```
+
+
+In our mailer class we can now create a new `PostMarkSmtpService` or `SendGridSmtpService` in our app and we can easily keep extending to support different smtp service.
+
+```javascript
+    class Mailer{
+        constructor(mail, mailerFormats){
+            this.mail = mail
+            this.mailerFormats = mailerFormats
+            this.smtpService = new PostMarkSmtpService()
+            // OR this.smtpService = new SendGridSmtpService()
+
+        }
+
+        send(){
+            // Loops through mail formats and calls the send method
+            this.mailerFormats.forEach((formater) => this.smtpService.send(formater.format(this.mail)))
+        }
+    }
+```
+
+With this implementaion a developer can keep extending the `MailerSmtpService` to support more mailing service without modifying the existing logic in the `MailerSmtpService`.
