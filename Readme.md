@@ -245,3 +245,9 @@ In our mailer class we can now create a new `PostMarkSmtpService` or `SendGridSm
 ```
 
 With this implementaion a developer can keep extending the `MailerSmtpService` to support more mailing service without modifying the existing logic in the `MailerSmtpService`.
+
+#### Liskov Substitution principle
+This principle states that
+> Derived or child classes must be substitutable for their base or parent classes. 
+
+This means that a parent class should be easily substituted by the child classes without blowing up the application. This principle can be seen in the example above where we created a parent class called `MailerSmtpService` and we had to child classes called `PostMarkSmtpService` and `SendGridSmtpService`. You can observe that the child classes where used and substituted with the parent class with ease. 

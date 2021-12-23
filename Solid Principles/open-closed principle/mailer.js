@@ -1,3 +1,4 @@
+const MailerSmtpService = require("./mailer_smtp_service");
 const PostMarkSmtpService = require("./postmark_smtp_service");
 const SendGridSmtpService = require("./sendgrid_smtp_service");
 
