@@ -59,10 +59,10 @@ This will make the `Mailer` class very difficult to maintain. Let's say for exam
 
 ##### Better Approach
 A more better approach is seen below where we divide all the task into seperate classes. We now have the following.
-- A class that connects to the smtp service
-- A class that formats our mail in text
-- A class that formats our mail in html
-- A class responsible for sending the mailer
+- A class that connects to the smtp service (TextFormatter)
+- A class that formats our mail in text (MailerSmtpService)
+- A class that formats our mail in html (HtmlFormatter)
+- A class responsible for sending the mailer (Mailer)
 
 You can see now the code looks better and our smtp service can be changed easily in only one class which does not affect the other parts of the mailing systems behaviour. If we use a new smtp service and it implements a `deliver` method instead of a `send` method then we only have to change one method (we change `this.smtp_con.send(mail)` to `this.smtp_con.deliver(mail)`) in the `MailerSmtpService` class. This will not affect other parts of our application and our app will still function properly. The Mailer class takes an instance of an smtp service and only sends a mail (__NOTE:__ `It is performing one and only one job to send mail`)
 
