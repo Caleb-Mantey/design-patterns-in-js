@@ -96,7 +96,7 @@ Also our `HtmlFormatter` and `TextFormatter` are doing just one thing formating 
 ```javascript
     class MailerSmtpService{
         constructor(){
-           this.smtp_con = smtp_service_connection()
+           this.smtp_con = this.smtp_service_connection()
         }
 
         send (mail){
@@ -118,6 +118,12 @@ Also our `HtmlFormatter` and `TextFormatter` are doing just one thing formating 
 
         format(mail){
              // formats to html version of mail
+              mail = `<html>
+            <head><title>Email For You</title></head>
+            <body>${mail}</body>
+            </html>`;
+
+            return mail;
         }
     }
 ```
@@ -130,6 +136,9 @@ Also our `HtmlFormatter` and `TextFormatter` are doing just one thing formating 
 
         format(mail){
              // formats to text version of mail
+             mail = "Email For You \n" + mail;
+
+            return mail;
         }
     }
 ```
@@ -148,7 +157,7 @@ This princple focus on the fact that the class must be easily extended without c
 Lets take an example from our `MailerSmtpService` class in the first example and lets make it support this principle.
 
 #### MailerSmtpService - ( Initial )
-This is our initial implementation for the for the `MailerSmtpService`. Nothing fancy here yet
+This is our initial implementation for the `MailerSmtpService`. Nothing fancy here yet
 ```javascript
     class MailerSmtpService{
         constructor(){
@@ -167,7 +176,7 @@ This is our initial implementation for the for the `MailerSmtpService`. Nothing 
 ```
 
 #### MailerSmtpService - ( Enhanced )
-To support the open-closed principle we remove the `smtp_service_connection` method from our `MailerSmtpService` class and rather we pass the method through a constructor method, then in a subclass (`PostMarkSmtpService` and `SendGridSmtpService`) that inherits from `MailerSmtpService` we call the `constructor` method of the base class with `super(smtp_connection_implementaion)` and we pass an implementation of the `smtp_service_connection` which handles the smtp connection depending on smtp provider in use.
+To support the open-closed principle we remove the `smtp_service_connection` method from our `MailerSmtpService` class and rather we pass the method through a constructor method, then in a subclass (`PostMarkSmtpService` and `SendGridSmtpService`) that inherits from `MailerSmtpService` we call the `constructor` method of the base class with `super(() => {})` and we pass a method which handles the smtp connection depending on smtp provider in use.
 
 ```javascript
     class MailerSmtpService{
@@ -186,16 +195,14 @@ To support the open-closed principle we remove the `smtp_service_connection` met
 ```javascript
     class PostMarkSmtpService extends MailerSmtpService {
         constructor(){
-            super(this.postmark_smtp_connection)
+           super(() => {
+                // Connects to postmark smtp service
+            })
         }
 
         send (mail){
             this.smtp_con.send(mail)
             // can also be this.smtp_con.deliver(mail)
-        }
-
-        postmark_smtp_connection(){
-            // Connects to smtp service
         }
     }
 ```
@@ -205,16 +212,14 @@ To support the open-closed principle we remove the `smtp_service_connection` met
 ```javascript
     class SendGridSmtpService extends MailerSmtpService {
         constructor(){
-            super(this.send_grid_smtp_connection)
+            super(() => {
+                // Connects to sendgrid smtp service
+            })
         }
 
         send (mail){
             this.smtp_con.send(mail)
             // can also be this.smtp_con.deliver(mail)
-        }
-
-        send_grid_smtp_connection(){
-            // Connects to smtp service
         }
     }
 ```

@@ -1,10 +1,11 @@
-const MailerSmtpService = require("./mailer_smtp_service");
+const PostMarkSmtpService = require("./postmark_smtp_service");
+const SendGridSmtpService = require("./sendgrid_smtp_service");
 
 class Mailer {
   constructor(mail, mailerFormats) {
     this.mail = mail;
     this.mailerFormats = mailerFormats;
-    this.smtpService = new MailerSmtpService();
+    this.smtpService = new SendGridSmtpService();
   }
 
   send() {
