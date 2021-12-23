@@ -17,10 +17,11 @@ Now lets break each of the principles down and get a better understanding of eac
 
 #### Single Responsibility Principle
 Single responsibility principle states that
-> A class should have one and only one responsibility. Which means your class should have only one job.
+> A class should have one and only one        responsibility. Which means your class should have only one job.
 
 Consider this example
-You have a mailer class that connects takes an email processes and sends the email as either text or html. Now Lets see what this class does to get the job done.
+You have a mailer class that connects to an smtp service, takes an email processes and sends the email as either text or html. Now Lets see what this class does to get the job done.
+
 ```javascript
     class Mailer{
         constructor(mail){
@@ -63,7 +64,7 @@ A more better approach is seen below where we divide all the task into seperate 
 - A class that formats our mail in html
 - A class responsible for sending the mailer
 
-You can see now the code looks better and our smtp service can be changed easily in only one class which does not affect the other parts of mailing systems behaviour. The Mailer class takes an instance of an smtp service and only sends a mail (__NOTE:__ `It is performing one and only one job to send mail`)
+You can see now the code looks better and our smtp service can be changed easily in only one class which does not affect the other parts of the mailing systems behaviour. If we use a new smtp service and it implements a `deliver` method instead of a `send` method then we only have to change one method (we change `this.smtp_con.send(mail)` to `this.smtp_con.deliver(mail)`) in the `MailerSmtpService` class. This will not affect other parts of our application and our app will still function properly. The Mailer class takes an instance of an smtp service and only sends a mail (__NOTE:__ `It is performing one and only one job to send mail`)
 
 Also our `HtmlFormatter` and `TextFormatter` are doing just one thing formating the mail in the right format.
 
@@ -129,3 +130,8 @@ Now we can send an email by simply doing this
     const mailer = new Mailer("hello kwame", [new HtmlFormatter(), new TextFormatter()])
     mailer.send();
 ```
+
+#### Open-closed Principle
+> This priciple states that a class must be open for extension but close for modification.
+
+This princple focus on the fact that the class must be easily extended without changing the contents of the class. If we follow this principle well we can actually change the behaviour of our class without ever touching any original piece of code.
