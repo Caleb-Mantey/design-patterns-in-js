@@ -1,0 +1,25 @@
+{
+  "name": "design-patterns",
+  "version": "1.0.0",
+  "description": "Design patterns are good and helps us to keep our project organized. Maintaining software projects is very hard and it is important we follow some set of rules to keep our code readable and easily maintainable. One fundmental software principle is the __SOLID PRINCIPLE__ which is ussually refered to the as *the first five principles of object oriented design*. This principle was formulated by _Robert C. Martin_ (also known as **Uncle Bob**). In this article we will be using javascript to explain certain concepts. Javascript it self doesn't support features like interfaces and abstract classes but with the addition of typescript we can write javascript like we do in other languages like c# and java. So in this article we will be using typescript too.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Caleb-Mantey/design-patterns.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Caleb-Mantey/design-patterns/issues"
+  },
+  "homepage": "https://github.com/Caleb-Mantey/design-patterns#readme",
+  "dependencies": {
+    "typescript": "^4.5.4"
+  },
+  "devDependencies": {
+    "@types/node": "^17.0.5"
+  }
+}

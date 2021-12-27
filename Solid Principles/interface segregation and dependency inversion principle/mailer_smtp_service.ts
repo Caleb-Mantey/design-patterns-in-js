@@ -1,4 +1,7 @@
-class MailerSmtpService {
+export default class MailerSmtpService {
+
+  smtp_con: any;
+
   constructor(
     smtp_connection = () => {
       //default smtp connection.....
@@ -8,9 +11,7 @@ class MailerSmtpService {
     this.smtp_con = smtp_connection();
   }
 
-  send(mail) {
+  send(mail: string) {
     this.smtp_con.send(mail);
   }
 }
-
-module.exports = MailerSmtpService;
