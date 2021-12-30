@@ -4,7 +4,7 @@ One fundmental software principle is the __SOLID PRINCIPLE__ which is ussually r
 
 
 ### SOLID
-Solid principles helps in reducing tight coupling between classes in our code. Tight coupling is when a group of classes highly depend on one another. Loose coupling is the opposite of tight coupling and this approach makes our code more reusable, readable, flexible, stable and maintainable. It is advisable to avoid tight coupling as much as possible and always make your code loosely coupled.
+Solid principles helps in reducing tight coupling between classes in our code. Tight coupling is when a group of classes highly depend on one another. Loose coupling is the opposite of tight coupling and this approach makes our code more reusable, readable, flexible, stable and maintainable. It is advisable to avoid tight coupling as much as possible and always make your code is loosely coupled.
 
 **SOLID** stands for
 - S - Single Responsibility Principle
@@ -413,3 +413,9 @@ class Mailer {
 Now lets look at the refactor of the `Mailer` class from our first example `(the first principle - Single responsibility principle)`. 
 You can see we now have a `_mailerFormats` property which takes an array of `IFormatter` objects (`_mailerFormats: Array<IFormatter>;`). This means any class that implements the `IFormatter` interface can be stored in this array. 
 Also our mailer class doesn't need to know about what formatter we are going to use, all it cares about is the formatter is implementing an `IFormatter` interface and it has a format method which we can call with ease. This will allow our `Mailer` class to be loosely coupled with our `HtmlFormatter` and `TextFormatter` class.
+
+
+## Memento Pattern
+The memento pattern is also know as the undo pattern. This pattern makes it easier to implement undo functionality in you application.
+Imagine you have been taxed to build a text editor which has an undo feature or a game where a user can undo some actions. Without the memento pattern this
+will take a lot of effort to implement.

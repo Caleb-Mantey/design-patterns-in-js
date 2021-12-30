@@ -12,6 +12,9 @@ export default class MailerSmtpService {
   }
 
   send(mail: string) {
-    this.smtp_con.send(mail);
+    //this.smtp_con.send(mail);
+    console.log("Sending default sms................")
+    console.log(mail)
+    console.log("............................")
   }
 }

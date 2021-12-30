@@ -12,9 +12,9 @@ class Mailer {
   constructor(mail: string, mailerFormats: Array<IFormatter>) {
     this._mail = mail;
     this._mailerFormats = mailerFormats;
-    this._smtpService = new SendGridSmtpService();
-    // this.smtpService = new PostMarkSmtpService();
-    // this.smtpService = new MailerSmtpService();
+    // this._smtpService = new SendGridSmtpService();
+    // this._smtpService = new PostMarkSmtpService();
+    this._smtpService = new MailerSmtpService();
   }
 
   send() {
