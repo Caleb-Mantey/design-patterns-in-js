@@ -428,3 +428,13 @@ maintainable and readable.
 ## Iterator Pattern
 This pattern is useful when you have a data type that needs to be iterated. As developers sometimes some custom data types we create in our application may have some methods for 
 transforming or performing some operations on the data, with this pattern we can create our custom iterator that can iterate our data and run some actions with ease.
+
+## Strategy Pattern
+This pattern is quite similar to the state pattern. The difference between the strategy and state pattern is in the state pattern we change to different state but with the strategy
+pattern we simply implement a strategy, and we can keep adding more strategies that needs to be executed. This pattern is also known as the policy pattern.
+
+## Template Method Pattern
+This pattern is useful when some classes needs to share some common functionality from a base class. We can implement the shared functionality in the base class and allow
+the sub classes to inherit those behaviors by default.
+
+
