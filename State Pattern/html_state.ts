@@ -1,7 +1,7 @@
-import MarkupState from "./markup_state";
+import IMarkupState from "./markup_state";
 
 
-export default class HtmlState extends MarkupState {
+export default class HtmlState implements IMarkupState {
 
 
     render(content: string): void {

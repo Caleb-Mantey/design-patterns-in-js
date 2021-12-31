@@ -1,10 +1,10 @@
-import MarkupState from "./markup_state";
+import IMarkupState from "./markup_state";
 
 export default class Markup {
-    private _currentState: MarkupState;
+    private _currentState: IMarkupState;
     private _content: string = "";
 
-    constructor(currentState: MarkupState) {
+    constructor(currentState: IMarkupState) {
         this._currentState = currentState;
     }
 
@@ -12,7 +12,7 @@ export default class Markup {
         this._content = content
     }
 
-    changeState(newState: MarkupState) {
+    changeState(newState: IMarkupState) {
         this._currentState = newState
     }
 

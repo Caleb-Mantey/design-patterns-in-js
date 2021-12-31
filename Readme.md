@@ -419,3 +419,8 @@ Also our mailer class doesn't need to know about what formatter we are going to 
 The memento pattern is also know as the undo pattern. This pattern makes it easier to implement undo functionality in you application.
 Imagine you have been taxed to build a text editor which has an undo feature or a game where a user can undo some actions. Without the memento pattern this
 will take a lot of effort to implement.
+
+
+## State Pattern
+The state pattern is used when your application needs to switch between a lot of states. This pattern eliminates long if statements in your code makes your code more
+maintainable and readable.

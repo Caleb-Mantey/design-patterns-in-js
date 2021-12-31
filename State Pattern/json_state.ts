@@ -1,7 +1,7 @@
 
-import MarkupState from "./markup_state"
+import IMarkupState from "./markup_state"
 
-export default class JsonState extends MarkupState {
+export default class JsonState implements IMarkupState {
 
     render(content: string) {
         content = JSON.parse(`{ "div": "${content}"}`)
