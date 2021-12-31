@@ -424,3 +424,7 @@ will take a lot of effort to implement.
 ## State Pattern
 The state pattern is used when your application needs to switch between a lot of states. This pattern eliminates long if statements in your code makes your code more
 maintainable and readable.
+
+## Iterator Pattern
+This pattern is useful when you have a data type that needs to be iterated. As developers sometimes some custom data types we create in our application may have some methods for 
+transforming or performing some operations on the data, with this pattern we can create our custom iterator that can iterate our data and run some actions with ease.
