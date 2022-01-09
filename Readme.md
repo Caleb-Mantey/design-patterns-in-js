@@ -416,25 +416,32 @@ Also our mailer class doesn't need to know about what formatter we are going to 
 
 
 ## Memento Pattern
-The memento pattern is also know as the undo pattern. This pattern makes it easier to implement undo functionality in you application.
+The memento pattern is also know as the undo pattern. This pattern makes it easier to implement undo functionality in you application. It allows restoring an object to a previous state.
 Imagine you have been taxed to build a text editor which has an undo feature or a game where a user can undo some actions. Without the memento pattern this
 will take a lot of effort to implement.
 
 
 ## State Pattern
 The state pattern is used when your application needs to switch between a lot of states. This pattern eliminates long if statements in your code makes your code more
-maintainable and readable.
+maintainable and readable. It allows an object to behave differently depending on the state it is in.
 
 ## Iterator Pattern
 This pattern is useful when you have a data type that needs to be iterated. As developers sometimes some custom data types we create in our application may have some methods for 
-transforming or performing some operations on the data, with this pattern we can create our custom iterator that can iterate our data and run some actions with ease.
+transforming or performing some operations on the data, with this pattern we can create our custom iterator that can iterate our data and run some actions with ease. It allows iterating over an object without having to expose the object’s internal structure (which may change in the future).
 
 ## Strategy Pattern
 This pattern is quite similar to the state pattern. The difference between the strategy and state pattern is in the state pattern we change to different state but with the strategy
-pattern we simply implement a strategy, and we can keep adding more strategies that needs to be executed. This pattern is also known as the policy pattern.
+pattern we simply implement a strategy, and we can keep adding more strategies that needs to be executed. This pattern is also known as the policy pattern as it allows passing different algorithms (behaviours) to an object.
 
 ## Template Method Pattern
 This pattern is useful when some classes needs to share some common functionality from a base class. We can implement the shared functionality in the base class and allow
 the sub classes to inherit those behaviors by default.
 
+## Command Pattern
+The Command pattern allows decoupling a sender from a receiver. The sender will talk to the receiver through a command. Commands can be undone and persisted.
 
+
+## Composite Pattern
+
+## Observer Pattern
+This pattern allows an object notify other objects when its state changes.
