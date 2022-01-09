@@ -442,6 +442,7 @@ The Command pattern allows decoupling a sender from a receiver. The sender will 
 
 
 ## Composite Pattern
+This pattern allow as to add a list of commands to be executed and executes them at once.
 
 ## Observer Pattern
 This pattern allows an object notify other objects when its state changes.
