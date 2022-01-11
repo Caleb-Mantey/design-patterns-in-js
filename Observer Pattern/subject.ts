@@ -1,7 +1,7 @@
 import IObserver from './IObserver';
 
 
-export default class Subject {
+export default abstract class Subject {
     _observers: Array<IObserver> = []
 
     addObserver(observer: IObserver) {
