@@ -446,3 +446,6 @@ This pattern allow as to add a list of commands to be executed and executes them
 
 ## Observer Pattern
 This pattern allows an object notify other objects when its state changes.
+
+## Chain Of Responsibility Pattern
+Allows building a chain of objects to process a request.
