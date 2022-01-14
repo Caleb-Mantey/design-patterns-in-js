@@ -63,7 +63,7 @@ This code does not follow the single responsibility principle  the mailer class 
 - Format the mail in html format
 - Sending the mail
 
-This will make the `Mailer` class very difficult to maintain. Let's say for example we want to change the smpt provider we are using we will have to come into this class and do some changes to the `smtp_service_connection` method and this can get tricky and messy if the new provider does'nt implement a `send` method but a `deliver` method then we will have to also come and change this line ` this.smtpService.send(this.format_html_mail())` in our `send` method to ` this.smtpService.deliver(this.format_html_mail())`. All these is a result of the fact that our class is not performing only one functionality.
+This will make the `Mailer` class very difficult to maintain. Let's say for example we want to change the smtp provider we are using we will have to come into this class and do some changes to the `smtp_service_connection` method and this can get tricky and messy if the new provider does'nt implement a `send` method but a `deliver` method then we will have to also come and change this line ` this.smtpService.send(this.format_html_mail())` in our `send` method to ` this.smtpService.deliver(this.format_html_mail())`. All these is a result of the fact that our class is not performing only one functionality.
 
 
 ##### Better Approach
@@ -150,9 +150,9 @@ Now we can send an email by simply doing this
 ```
 
 #### Open-closed Principle
-> This priciple states that a class must be open for extension but close for modification.
+> This principle states that a class must be open for extension but close for modification.
 
-This princple focus on the fact that the class must be easily extended without changing the contents of the class. If we follow this principle well we can actually change the behaviour of our class without ever touching any original piece of code. This also means if a Developer named Fred works on a certain feature and another Developer named Kwame wants to add some changes, then Kwame should be able to do that easily by extending on the features Fred has already provided.
+This principle focus on the fact that the class must be easily extended without changing the contents of the class. If we follow this principle well we can actually change the behaviour of our class without ever touching any original piece of code. This also means if a Developer named Fred works on a certain feature and another Developer named Kwame wants to add some changes, then Kwame should be able to do that easily by extending on the features Fred has already provided.
 
 Lets take an example from our `MailerSmtpService` class in the first example and lets make it support this principle.
 
