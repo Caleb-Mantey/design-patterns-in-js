@@ -1,21 +1,35 @@
 # Design Patterns
-Design patterns are good and helps us to keep our project organized. Maintaining software projects is very hard and it is important we follow some set of rules to keep our code readable and easily maintainable.
-One fundmental software principle is the __SOLID PRINCIPLE__ which is ussually refered to the as *the first five principles of object oriented design*. This principle was formulated by _Robert C. Martin_ (also known as **Uncle Bob**). In this article we will be using javascript to explain certain concepts. Javascript it self doesn't support features like interfaces and abstract classes but with the addition of typescript we can write javascript like we do in other languages like c# and java. So in this article we will be using typescript too.
+Design patterns are simply solutions to problems experienced software engineers encounter during the development of a software product. They provide a general best practice approach to problems that have been solved by try and error from renowned software engineers.
+Design patterns are good and helps software engineers keep their project organized. Maintaining software projects is very hard and it is important we follow some set of rules to keep our code readable, reusable and easily maintainable.
+
+In 1994, four authors Erich Gamma, Richard Helm, Ralph Johnson and John Vlissides published a book titled Design Patterns - Elements of Reusable Object-Oriented Software which initiated the concept of Design Pattern in Software development.
+
+These authors are collectively known as `Gang of Four (GOF)`.
+
+Types of Design Patterns
+Design patterns can be grouped into three main categories. There are a lot of design patterns currently been used but all these patterns fall under one of these three categories.
+
+- Behavioral Patterns
+- Structural Patterns
+- Creational Patterns
+
 
 
 ### SOLID
+One fundmental software principle is the __SOLID PRINCIPLE__ which is ussually refered to the as *the first five principles of object oriented design*. This principle was formulated by _Robert C. Martin_ (also known as **Uncle Bob**). In this article we will be using javascript to explain certain concepts. Javascript doesn't support features like interfaces and abstract classes but with the addition of typescript we can write javascript like we do in other languages like c# and java. So in this article we will be using typescript too.
+
 Solid principles helps in reducing tight coupling between classes in our code. Tight coupling is when a group of classes highly depend on one another. Loose coupling is the opposite of tight coupling and this approach makes our code more reusable, readable, flexible, stable and maintainable. It is advisable to avoid tight coupling as much as possible and always make your code is loosely coupled.
 
 **SOLID** stands for
-- S - Single Responsibility Principle
-- O - Open-closed Principle
-- L - Liskov Substitution Principle
-- I - Interface Segregation Principle
-- D - Dependency Inversion Principle
+- S - [Single Responsibility Principle](#srp)
+- O - [Open-closed Principle](#ocp)
+- L - [Liskov Substitution Principle](#lsp)
+- I - [Interface Segregation Principle](#isp)
+- D - [Dependency Inversion Principle](#dip)
   
 Now lets break each of the principles down and get a better understanding of each of these principles.
 
-#### Single Responsibility Principle
+#### Single Responsibility Principle<a name="srp"></a>
 Single responsibility principle states that
 > A class should have one and only one        responsibility. Which means your class should have only one job.
 
@@ -149,7 +163,7 @@ Now we can send an email by simply doing this
     mailer.send();
 ```
 
-#### Open-closed Principle
+#### Open-closed Principle<a name="ocp"></a>
 > This principle states that a class must be open for extension but close for modification.
 
 This principle focus on the fact that the class must be easily extended without changing the contents of the class. If we follow this principle well we can actually change the behaviour of our class without ever touching any original piece of code. This also means if a Developer named Fred works on a certain feature and another Developer named Kwame wants to add some changes, then Kwame should be able to do that easily by extending on the features Fred has already provided.
@@ -248,7 +262,7 @@ In our mailer class we can now create a new `PostMarkSmtpService` or `SendGridSm
 
 With this implementaion a developer can keep extending the `MailerSmtpService` to support more mailing service without modifying the existing logic in the `MailerSmtpService`.
 
-#### Liskov Substitution principle
+#### Liskov Substitution principle<a name="lsp"></a>
 This principle states that
 > Derived or child classes must be substitutable for their base or parent classes. 
 
@@ -263,7 +277,7 @@ For example:
 ```
  
 
- #### Interface Segregation Principle
+ #### Interface Segregation Principle<a name="isp"></a>
 This principle states that
 > Do not force any client to implement an interface which is irrelevant to them.
 
@@ -375,7 +389,7 @@ Now lets see a better approach:
 Now you can see from the code refactor we have a new interface `IStyles` as well as our previous interface `IFormatter`. Also the `HtmlFormatter` class implements both the `IStyles` and `IFormatter` interface whiles the `TextFormatter` class implements only the `IFormatter` interface. This now makes our code cleaner and ensures the right methods are been implement in the classes that needs them. Now our `TextFormatter` class does not need to implement the `custom_styles` method since we have removed the `custom_styles` method from the `IFormatter` interface to a new interface (`IStyles`). This makes our code more maintainable and scalable. 
 This is the `Interface Segregation Principle` at work. 
 
- #### Dependency Inversion
+ #### Dependency Inversion Principle<a name="dip"></a>
 This principle is divided into two parts and it states that
 > - High-level modules/classes should not depend on low-level modules/classes. Both should depend on abstractions.
 > - Abstractions should not depend on details. Details should depend on abstractions.
