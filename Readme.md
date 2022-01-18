@@ -1,12 +1,12 @@
 # Design Patterns
-Design patterns are simply solutions to problems experienced software engineers encounter during the development of a software product. They provide a general best practice approach to problems that have been solved by try and error from renowned software engineers.
-Design patterns are good and helps software engineers keep their project organized. Maintaining software projects is very hard and it is important we follow some set of rules to keep our code readable, reusable and easily maintainable.
+Design patterns are simply solutions to problems that experienced software engineers encounter during the development of a software product. They provide a general best practice approach to problems that have been solved by try and error from renowned software engineers.
+Design patterns are good and helps software engineers keep their project organized. Maintaining software projects is very hard and it is very important we follow some set of rules to keep our code readable, reusable and easily maintainable.
 
-In 1994, four authors Erich Gamma, Richard Helm, Ralph Johnson and John Vlissides published a book titled Design Patterns - Elements of Reusable Object-Oriented Software which initiated the concept of Design Pattern in Software development.
+In 1994, four authors Erich Gamma, Richard Helm, Ralph Johnson and John Vlissides published a book titled `Design Patterns - Elements of Reusable Object-Oriented Software` which initiated the concept of Design Patterns in Software development.
 
 These authors are collectively known as `Gang of Four (GOF)`.
 
-Types of Design Patterns
+## Types of Design Patterns
 Design patterns can be grouped into three main categories. There are a lot of design patterns currently been used but all these patterns fall under one of these three categories.
 
 - Behavioral Patterns
@@ -14,8 +14,49 @@ Design patterns can be grouped into three main categories. There are a lot of de
 - Creational Patterns
 
 
+### Behavioral Patterns
+These types of design pattern focus on the communication between objects in an application (how classes and communicates with each other). 
 
-### SOLID
+### Types of Behavioral Patterns
+## [Memento Pattern](behavioral%20patterns/Memento%20Pattern/)
+The memento pattern is also know as the undo pattern. This pattern makes it easier to implement undo functionality in you application. It allows restoring an object to a previous state.
+Imagine you have been taxed to build a text editor which has an undo feature or a game where a user can undo some actions. Without the memento pattern this
+will take a lot of effort to implement.
+
+
+## State Pattern
+The state pattern is used when your application needs to switch between a lot of states. This pattern eliminates long if statements in your code makes your code more
+maintainable and readable. It allows an object to behave differently depending on the state it is in.
+
+## Iterator Pattern
+This pattern is useful when you have a data type that needs to be iterated. As developers sometimes some custom data types we create in our application may have some methods for 
+transforming or performing some operations on the data, with this pattern we can create our custom iterator that can iterate our data and run some actions with ease. It allows iterating over an object without having to expose the object’s internal structure (which may change in the future).
+
+## Strategy Pattern
+This pattern is quite similar to the state pattern. The difference between the strategy and state pattern is in the state pattern we change to different state but with the strategy
+pattern we simply implement a strategy, and we can keep adding more strategies that needs to be executed. This pattern is also known as the policy pattern as it allows passing different algorithms (behaviours) to an object.
+
+## Template Method Pattern
+This pattern is useful when some classes needs to share some common functionality from a base class. We can implement the shared functionality in the base class and allow
+the sub classes to inherit those behaviors by default.
+
+## Command Pattern
+The Command pattern allows decoupling a sender from a receiver. The sender will talk to the receiver through a command. Commands can be undone and persisted.
+
+
+## Composite Command Pattern
+This pattern allow as to add a list of commands to be executed and executes them at once.
+
+## Observer Pattern
+This pattern allows an object notify other objects when its state changes.
+
+## Chain Of Responsibility Pattern
+Allows building a chain of objects to process a request.
+
+## Visitor Pattern
+Allows adding new operations to an object structure without modifying it.
+
+### SOLID Design Principles
 One fundmental software principle is the __SOLID PRINCIPLE__ which is ussually refered to the as *the first five principles of object oriented design*. This principle was formulated by _Robert C. Martin_ (also known as **Uncle Bob**). In this article we will be using javascript to explain certain concepts. Javascript doesn't support features like interfaces and abstract classes but with the addition of typescript we can write javascript like we do in other languages like c# and java. So in this article we will be using typescript too.
 
 Solid principles helps in reducing tight coupling between classes in our code. Tight coupling is when a group of classes highly depend on one another. Loose coupling is the opposite of tight coupling and this approach makes our code more reusable, readable, flexible, stable and maintainable. It is advisable to avoid tight coupling as much as possible and always make your code is loosely coupled.
@@ -428,41 +469,3 @@ Now lets look at the refactor of the `Mailer` class from our first example `(the
 You can see we now have a `_mailerFormats` property which takes an array of `IFormatter` objects (`_mailerFormats: Array<IFormatter>;`). This means any class that implements the `IFormatter` interface can be stored in this array. 
 Also our mailer class doesn't need to know about what formatter we are going to use, all it cares about is the formatter is implementing an `IFormatter` interface and it has a format method which we can call with ease. This will allow our `Mailer` class to be loosely coupled with our `HtmlFormatter` and `TextFormatter` class.
 
-
-## Memento Pattern
-The memento pattern is also know as the undo pattern. This pattern makes it easier to implement undo functionality in you application. It allows restoring an object to a previous state.
-Imagine you have been taxed to build a text editor which has an undo feature or a game where a user can undo some actions. Without the memento pattern this
-will take a lot of effort to implement.
-
-
-## State Pattern
-The state pattern is used when your application needs to switch between a lot of states. This pattern eliminates long if statements in your code makes your code more
-maintainable and readable. It allows an object to behave differently depending on the state it is in.
-
-## Iterator Pattern
-This pattern is useful when you have a data type that needs to be iterated. As developers sometimes some custom data types we create in our application may have some methods for 
-transforming or performing some operations on the data, with this pattern we can create our custom iterator that can iterate our data and run some actions with ease. It allows iterating over an object without having to expose the object’s internal structure (which may change in the future).
-
-## Strategy Pattern
-This pattern is quite similar to the state pattern. The difference between the strategy and state pattern is in the state pattern we change to different state but with the strategy
-pattern we simply implement a strategy, and we can keep adding more strategies that needs to be executed. This pattern is also known as the policy pattern as it allows passing different algorithms (behaviours) to an object.
-
-## Template Method Pattern
-This pattern is useful when some classes needs to share some common functionality from a base class. We can implement the shared functionality in the base class and allow
-the sub classes to inherit those behaviors by default.
-
-## Command Pattern
-The Command pattern allows decoupling a sender from a receiver. The sender will talk to the receiver through a command. Commands can be undone and persisted.
-
-
-## Composite Command Pattern
-This pattern allow as to add a list of commands to be executed and executes them at once.
-
-## Observer Pattern
-This pattern allows an object notify other objects when its state changes.
-
-## Chain Of Responsibility Pattern
-Allows building a chain of objects to process a request.
-
-## Visitor Pattern
-Allows adding new operations to an object structure without modifying it.
