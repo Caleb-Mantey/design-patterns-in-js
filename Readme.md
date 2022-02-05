@@ -12,3 +12,11 @@ Design patterns can be grouped into three main categories. There are a lot of de
 - Behavioral Patterns
 - Structural Patterns
 - Creational Patterns
+
+## Next Steps
+This repo contains a lot of code examples for design patterns in javascript and typescript. I have organized them into different folders covering different topics with relevant examples. You can access any of the links below to learn by looking at the code example. Feel free to contribute by creating a pr and sending me an email at `manteycaleb@gmail.com`
+
+
+### Examples
+
+- [Behavioral Patterns](behavioral%20patterns/)
