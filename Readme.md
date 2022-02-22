@@ -20,3 +20,4 @@ This repo contains a lot of code examples for design patterns in javascript and 
 ### Examples
 
 - [Behavioral Patterns](behavioral%20patterns/)
+- [Structural Patterns](structural%20patterns/)
