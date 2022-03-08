@@ -22,3 +22,8 @@ This Decorator pattern lets you attach new behaviors to objects by placing these
 Facade is a structural design pattern that provides a simplified interface to a library, a framework, or any other complex set of classes. Clients can talk to the facade rather than individual classes in the subsystem (library or framework).
 
 [View Example](Facade%20Pattern/)
+
+## [Flyweight Pattern](Flyweight%20Pattern/)
+definition goes here
+
+[View Example](Flyweight%20Pattern/)
