@@ -30,6 +30,6 @@ Facade is a structural design pattern that provides a simplified interface to a 
 
 ### [Flyweight Pattern](Flyweight%20Pattern/)
 
-Flyweight is a structural design pattern that lets you fit more objects into the available amount of RAM by sharing common parts of state between multiple objects instead of keeping all of the data in each object. This pattern is useful for memory management in applications.
+Flyweight is a structural design pattern that lets you fit more objects into the available amount of RAM by sharing common parts of state between multiple objects instead of keeping all of the data in each object. This pattern is useful for memory management in applications (Example: Loading images or static assets that are used in multiple places in your applications).
 
 [View Example](Flyweight%20Pattern/)
