@@ -33,3 +33,15 @@ Facade is a structural design pattern that provides a simplified interface to a 
 Flyweight is a structural design pattern that lets you fit more objects into the available amount of RAM by sharing common parts of state between multiple objects instead of keeping all of the data in each object. This pattern is useful for memory management in applications (Example: Loading images or static assets that are used in multiple places in your applications).
 
 [View Example](Flyweight%20Pattern/)
+
+### [Bridge Pattern](Bridge%20Pattern/)
+
+Bridge is a structural design pattern that lets you split a large class or a set of closely related classes into two separate hierarchies—abstraction and implementation—which can be developed independently of each other. It also allows representing hierarchies that grow in two different dimensions independently.
+
+[View Example](Bridge%20Pattern/)
+
+### [Proxy Pattern](Proxy%20Pattern/)
+
+Allows providing a substitute for another object. The proxy object delegates all the work to the target object and contains some additional behavior. A proxy controls access to the original object, allowing you to perform something either before or after the request gets through to the original object.
+
+[View Example](Proxy%20Pattern/)
