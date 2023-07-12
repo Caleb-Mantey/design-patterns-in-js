@@ -4,7 +4,7 @@ import Customer from './customer';
 export default interface IteratorInterface<T> {
     hasNext(): boolean;
     next(): void;
-    getCurrentCustomer(): Customer;
-    addCustomer(customer: Customer): void;
+    getCurrentCustomer(): T;
+    addCustomer(customer: T): void;
     _currentCustomer: T;
 }
